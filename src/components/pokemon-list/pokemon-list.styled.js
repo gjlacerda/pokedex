@@ -11,19 +11,23 @@ export const List = styled.ul`
     list-style: none;
 `;
 
-export const ItemWrapper = styled.li`
+export const Item = styled.li`
     display: flex;
     flex-basis: 20%;
     justify-content: center;
 `;
 
-export const Item = styled.div`
+export const Content = styled.div`
     width: 100%;
     margin: 3px;
     border: 1px solid ${grayLight};
     border-radius: 2px;
     background-color: white;
     cursor: pointer;
+    
+    &:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    }
 `;
 
 export const ImageWrapper = styled.div`
