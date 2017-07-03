@@ -19,7 +19,7 @@ export default class PokemonService {
     list(limit) {
 
         let url = this.url.mountUrlParams({
-            limit: limit || 20,
+            limit: limit || 100,
             offset: this.offset
         });
 
@@ -33,8 +33,11 @@ export default class PokemonService {
 
                     pokemons = results.map((pokemon, index) => {
 
+                        let id = ++index;
+
                         return Object.assign({}, pokemon, {
-                            sprite: sprite.replace('{index}', ++index)
+                            sprite: sprite.replace('{index}', id),
+                            shiny: sprite.replace('{index}', 'shiny/' + id)
                         });
                     });
 

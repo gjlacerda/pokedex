@@ -1,12 +1,14 @@
 import React from 'react';
-import {Wrapper} from './pokemon-list.styled';
-
-const api = 'http://pokeapi.co/api/v2/pokemon';
+import PokemonService from '~/src/services/pokemon.service';
+import {List, Item, ImageWrapper, ItemWrapper} from './pokemon-list.styled';
 
 export default class PokemonList extends React.Component {
 
     constructor() {
+
         super();
+
+        this.pokemonService = new PokemonService();
 
         this.state = {
             pokemons: []
@@ -16,21 +18,27 @@ export default class PokemonList extends React.Component {
     }
 
     render() {
+
         return (
-            <Wrapper>
-                <h1>{this.state.pokemons.length}</h1>
-            </Wrapper>
+            <List>
+                {this.state.pokemons.map(pokemon => (
+                    <ItemWrapper key={pokemon.name}>
+                        <Item>
+                            <ImageWrapper>
+                                <img src={pokemon.sprite}/>
+                            </ImageWrapper>
+                        </Item>
+                    </ItemWrapper>
+                ))}
+            </List>
         );
     }
 
     /**
-     * Lista all pokemons from API
+     * Get a list of pokemons
      */
     getPokemons() {
-        fetch(api)
-            .then(response => response.json())
-            .then(({results}) => this.setState({
-                pokemons: results
-            }));
+        this.pokemonService.list()
+            .then(response => this.setState({pokemons: response}));
     }
 }
