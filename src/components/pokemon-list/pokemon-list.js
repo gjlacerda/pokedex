@@ -21,7 +21,7 @@ export default class PokemonList extends React.Component {
     render() {
 
         return (
-            <InfiniteScroll element="body">
+            <InfiniteScroll window="true" paginate={this.getPokemons.bind(this)} offset="400">
                 <List>
                     {this.state.pokemons.map(pokemon => (
                         <Item key={pokemon.name}>
@@ -41,7 +41,10 @@ export default class PokemonList extends React.Component {
      * Get a list of pokemons
      */
     getPokemons() {
-        this.pokemonService.list()
-            .then(response => this.setState({pokemons: response}));
+        return this.pokemonService.list().then(response => {
+            this.setState({
+                pokemons: this.state.pokemons.concat(response)
+            });
+        });
     }
 }
