@@ -6,7 +6,6 @@ const sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites
 export default class PokemonService {
 
     constructor() {
-
         this.url    = new Url(api);
         this.offset = 0;
     }
@@ -19,7 +18,7 @@ export default class PokemonService {
     list(limit) {
 
         let url = this.url.mountUrlParams({
-            limit: limit || 100,
+            limit: limit || 50,
             offset: this.offset
         });
 
@@ -30,16 +29,18 @@ export default class PokemonService {
             fetch(url)
                 .then(response => response.json())
                 .then(({results}) => {
-
+                    
                     pokemons = results.map((pokemon, index) => {
 
-                        let id = ++index;
+                        let id = ++index + this.offset;
 
                         return Object.assign({}, pokemon, {
                             sprite: sprite.replace('{index}', id),
                             shiny: sprite.replace('{index}', 'shiny/' + id)
                         });
                     });
+
+                    this.offset += results.length;
 
                     resolve(pokemons);
                 })
