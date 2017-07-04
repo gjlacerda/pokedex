@@ -1,6 +1,6 @@
 import React from 'react';
 import PokemonList from '~/src/components/pokemon-list/Pokemon-list';
-import {Container} from '~/src/styled/container.styled';
+import {Container} from '~/src/styled/app/container.styled';
 
 class Home extends React.Component {
 

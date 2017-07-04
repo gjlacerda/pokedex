@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {grayLight} from '~/src/styled/colors.styled';
+import {grayLight} from '~/src/styled/app/colors.styled';
 
 const spriteWidth = '96px';
 
