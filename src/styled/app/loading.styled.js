@@ -18,6 +18,8 @@ export const Loading = styled.div`
     font-size: 10px;
     position: relative;
     text-indent: -9999em;
+    width: ${props => formatSize(props.size)};
+    height: ${props => formatSize(props.size)};   
     border-top: ${props => formatBorder(props.size)} solid #eee;
     border-right: ${props => formatBorder(props.size)} solid #eee;
     border-bottom: ${props => formatBorder(props.size)} solid #eee;
@@ -25,9 +27,7 @@ export const Loading = styled.div`
     transform: translateZ(0);
     animation: load 1s infinite linear;
     border-radius: 50%;
-    width: ${props => formatSize(props.size)};
-    height: ${props => formatSize(props.size)};    
-
+       
     &:after {
         border-radius: 50%;
         width: ${props => formatSize(props.size)};
