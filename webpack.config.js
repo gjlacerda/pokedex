@@ -28,7 +28,15 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: [
+            '*',
+            '.js',
+            '.jsx'
+        ],
+        modules: [
+            'src',
+            'node_modules'
+        ]
     },
     devServer: {
         publicPath: '/',
