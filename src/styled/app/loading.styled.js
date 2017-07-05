@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {grayLight, grayDark} from '~/src/styled/app/colors.styled';
+import {grayLight, grayDark} from 'styled/app/colors.styled';
 
 const defaultSize = '50px';
 

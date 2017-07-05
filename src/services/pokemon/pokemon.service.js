@@ -1,4 +1,4 @@
-import Url from '~/src/utils/url';
+import Url from 'utils/url';
 
 const api    = 'http://pokeapi.co/api/v2/pokemon/';
 const sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{index}.png';

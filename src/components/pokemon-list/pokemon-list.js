@@ -1,8 +1,8 @@
 import React from 'react';
-import PokemonService from '~/src/services/pokemon/pokemon.service';
-import InfiniteScroll from '~/src/components/infinite-scroll/infinite-scroll';
-import {List, Item, Content, ImageWrapper} from '~/src/styled/components/pokemon-list/pokemon-list.styled';
-import {Loading} from '~/src/styled/app/loading.styled';
+import PokemonService from 'services/pokemon/pokemon.service';
+import InfiniteScroll from 'components/infinite-scroll/infinite-scroll';
+import {List, Item, Content, ImageWrapper} from 'styled/components/pokemon-list/pokemon-list.styled';
+import {Loading} from 'styled/app/loading.styled';
 
 export default class PokemonList extends React.Component {
 
@@ -44,7 +44,7 @@ export default class PokemonList extends React.Component {
      * Get a list of pokemons
      */
     getPokemons() {
-        
+
         return this.pokemonService.list().then(response => {
             this.setState({
                 pokemons: this.state.pokemons.concat(response),
