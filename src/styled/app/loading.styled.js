@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import {grayLight, grayDark} from '~/src/styled/app/colors.styled';
 
 const defaultSize = '50px';
 
@@ -20,10 +21,10 @@ export const Loading = styled.div`
     text-indent: -9999em;
     width: ${props => formatSize(props.size)};
     height: ${props => formatSize(props.size)};   
-    border-top: ${props => formatBorder(props.size)} solid #eee;
-    border-right: ${props => formatBorder(props.size)} solid #eee;
-    border-bottom: ${props => formatBorder(props.size)} solid #eee;
-    border-left: ${props => formatBorder(props.size)} solid #aaa;
+    border-top: ${props => formatBorder(props.size)} solid ${grayLight};
+    border-right: ${props => formatBorder(props.size)} solid ${grayLight};
+    border-bottom: ${props => formatBorder(props.size)} solid ${grayLight};
+    border-left: ${props => formatBorder(props.size)} solid ${grayDark};
     transform: translateZ(0);
     animation: load 1s infinite linear;
     border-radius: 50%;
