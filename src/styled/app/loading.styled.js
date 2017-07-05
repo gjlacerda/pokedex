@@ -3,13 +3,27 @@ import {grayLight, grayDark} from 'styled/app/colors.styled';
 
 const defaultSize = '50px';
 
+/**
+ * Get the size passed as parameter or get default
+ * @param size
+ */
 const formatSize = (size) => size ? size + 'px' : defaultSize;
 
+/**
+ * Calculate the size of border (12%) by the size of the element
+ * @param size
+ * @returns {string}
+ */
 const formatBorder = (size) => {
     let finalSize = size ? size : parseInt(defaultSize);
     return (finalSize / 100 * 12) + 'px';
 };
 
+/**
+ * Calculte the position to center the element
+ * @param size
+ * @returns {string}
+ */
 const getCenter = (size) => {
     let finalSize = formatSize(size);
     return `calc(50% - ${parseInt(finalSize) / 2}px)`;
