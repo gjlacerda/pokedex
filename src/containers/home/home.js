@@ -6,9 +6,11 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Container>
-                <PokemonList/>
-            </Container>
+            <main>
+                <Container>
+                    <PokemonList/>
+                </Container>
+            </main>
         );
     }
 }
