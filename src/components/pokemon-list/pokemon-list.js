@@ -13,10 +13,11 @@ export default class PokemonList extends React.Component {
         this.pokemonService = new PokemonService();
 
         this.state = {
-            pokemons: [],
-            loading: true
+            pokemons: []
         };
+    }
 
+    componentWillMount() {
         this.getPokemons();
     }
 
@@ -44,6 +45,10 @@ export default class PokemonList extends React.Component {
      * Get a list of pokemons
      */
     getPokemons() {
+
+        this.setState({
+            loading: true
+        });
 
         return this.pokemonService.list().then(response => {
             this.setState({
