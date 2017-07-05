@@ -6,30 +6,26 @@ const sizes = {
     desktop: 992
 };
 
+const getCss = (size, ...args) => {
+    return css`
+            @media (min-width: ${size}px) {
+                ${css(...args)}
+            }
+        `;
+};
+
 const media = {
 
     phone: (...args) => {
-        return css`
-            @media (min-width: ${sizes.phone}px) {
-                ${css(...args)}
-            }
-        `;
+        return getCss(sizes.phone, ...args);
     },
 
     tablet: (...args) => {
-        return css`
-            @media (min-width: ${sizes.tablet}px) {
-                ${css(...args)}
-            }
-        `;
+        return getCss(sizes.tablet, ...args);
     },
 
     desktop: (...args) => {
-        return css`
-            @media (min-width: ${sizes.desktop}px) {
-                ${css(...args)}
-            }
-        `;
+        return getCss(sizes.desktop, ...args);
     },
 };
 
