@@ -44,9 +44,7 @@ export default class PokemonList extends React.Component {
      * Get a list of pokemons
      */
     getPokemons() {
-
-        this.setState({loading: true});
-
+        
         return this.pokemonService.list().then(response => {
             this.setState({
                 pokemons: this.state.pokemons.concat(response),
