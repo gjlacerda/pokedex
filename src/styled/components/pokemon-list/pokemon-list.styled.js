@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {grayLight} from 'styled/app/colors.styled';
+import media from 'styled/app/media.styled';
 
 const spriteWidth = '96px';
 
@@ -13,8 +14,20 @@ export const List = styled.ul`
 
 export const Item = styled.li`
     display: flex;
-    flex-basis: 20%;
+    flex-basis: 50%;
     justify-content: center;
+    
+    ${media.phone`
+        flex-basis: 33.3333%;
+    `}
+    
+    ${media.tablet`
+        flex-basis: 25%;
+    `}
+    
+    ${media.desktop`
+        flex-basis: 20%;
+    `}
 `;
 
 export const Content = styled.div`
