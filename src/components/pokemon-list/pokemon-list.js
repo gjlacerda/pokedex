@@ -68,7 +68,9 @@ export default class PokemonList extends React.Component {
     openModal(pokemon) {
 
         ReactDOM.render(
-            <Modal pokemon={pokemon} />,
+            <Modal pokemon={pokemon}>
+                teste
+            </Modal>,
             document.getElementById('modalContainer')
         );
     }
