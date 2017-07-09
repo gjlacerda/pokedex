@@ -42,6 +42,7 @@ export const Loading = styled.div`
     transform: translateZ(0);
     animation: load 1s infinite linear;
     border-radius: 50%;
+    z-index: 5;
        
     &:after {
         border-radius: 50%;
