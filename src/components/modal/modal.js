@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Container, Content} from 'styled/components/modal/modal.styled';
+import {Container, Content, Close} from 'styled/components/modal/modal.styled';
 
 export default class Modal extends React.Component {
 
@@ -13,8 +13,10 @@ export default class Modal extends React.Component {
 
     render() {
         return (
-            <Container onClick={this.close.bind(this)}>
-                <Content></Content>
+            <Container>
+                <Content>
+                    <Close onClick={this.close.bind(this)}>&times;</Close>
+                </Content>
             </Container>
         );
     }

@@ -24,9 +24,11 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-    width: 200px;
-    height: 200px;
+    position: relative;
+    width: 320px;
+    height: 568px;
     background-color: #fff;
+    border-radius: 3px;
     animation: zoom 0.3s forwards;
     
     @keyframes zoom {
@@ -38,4 +40,14 @@ export const Content = styled.div`
             transform: scale(1);
         }
     }
+`;
+
+export const Close = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 20px;
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
 `;
