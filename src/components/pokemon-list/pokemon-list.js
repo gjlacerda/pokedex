@@ -1,6 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PokemonService from 'services/pokemon/pokemon.service';
 import InfiniteScroll from 'components/infinite-scroll/infinite-scroll';
+import Modal from 'components/modal/modal';
 import {List, Item, Content, ImageWrapper} from 'styled/components/pokemon-list/pokemon-list.styled';
 import {Loading} from 'styled/app/loading.styled';
 
@@ -13,6 +15,8 @@ export default class PokemonList extends React.Component {
         this.pokemonService = new PokemonService();
 
         this.state = {
+            modal: false,
+            loading: false,
             pokemons: []
         };
     }
@@ -25,11 +29,13 @@ export default class PokemonList extends React.Component {
 
         return (
             <InfiniteScroll window="true" paginate={this.getPokemons.bind(this)} offset="400">
+
                 {this.state.loading && <Loading size="50" center/>}
+
                 <List>
                     {this.state.pokemons.map(pokemon => (
                         <Item key={pokemon.name}>
-                            <Content>
+                            <Content onClick={this.openModal.bind(this, pokemon)}>
                                 <ImageWrapper>
                                     <img src={pokemon.sprite}/>
                                 </ImageWrapper>
@@ -37,6 +43,7 @@ export default class PokemonList extends React.Component {
                         </Item>
                     ))}
                 </List>
+
             </InfiniteScroll>
         );
     }
@@ -56,5 +63,13 @@ export default class PokemonList extends React.Component {
                 loading: false
             });
         });
+    }
+
+    openModal(pokemon) {
+
+        ReactDOM.render(
+            <Modal pokemon={pokemon} />,
+            document.getElementById('modalContainer')
+        );
     }
 }

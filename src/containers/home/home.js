@@ -7,9 +7,13 @@ class Home extends React.Component {
     render() {
         return (
             <main>
+
                 <Container>
                     <PokemonList/>
                 </Container>
+
+                <div id="modalContainer"></div>
+
             </main>
         );
     }
