@@ -28,7 +28,7 @@ export const Content = styled.div`
     width: 320px;
     height: 568px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 2px;
     animation: zoom 0.3s forwards;
     border-radius: 3px;
     overflow: hidden;
