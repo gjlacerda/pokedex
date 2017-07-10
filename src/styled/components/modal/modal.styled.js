@@ -30,6 +30,8 @@ export const Content = styled.div`
     background-color: #fff;
     border-radius: 3px;
     animation: zoom 0.3s forwards;
+    border-radius: 3px;
+    overflow: hidden;
     
     @keyframes zoom {
         from {
@@ -50,4 +52,6 @@ export const Close = styled.div`
     font-size: 25px;
     padding: 5px;
     cursor: pointer;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 `;
