@@ -1,8 +1,9 @@
 import {injectGlobal} from 'styled-components';
+import {bodyBg} from 'styled/app/colors.styled';
 
 injectGlobal`
     body {
-        background-color: #fafafa;
+        background-color: ${bodyBg};
     }
     
     * {
