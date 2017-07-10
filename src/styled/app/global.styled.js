@@ -4,4 +4,8 @@ injectGlobal`
     body {
         background-color: #fafafa;
     }
+    
+    * {
+        box-sizing: border-box;
+    }
 `;
