@@ -10,13 +10,13 @@ const defaultSize = '50px';
 const formatSize = (size) => size ? size + 'px' : defaultSize;
 
 /**
- * Calculate the size of border (12%) by the size of the element
+ * Calculate the size of border (10%) by the size of the element
  * @param size
  * @returns {string}
  */
 const formatBorder = (size) => {
     let finalSize = size ? size : parseInt(defaultSize);
-    return (finalSize / 100 * 12) + 'px';
+    return (finalSize / 100 * 10) + 'px';
 };
 
 /**
