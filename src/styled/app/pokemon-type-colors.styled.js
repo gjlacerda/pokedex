@@ -1,4 +1,4 @@
-export const types = {
+const types = {
     normal: 'linear-gradient(#a8a878,#8a8a59)',
     fire: 'linear-gradient(#f08030,#dd6610)',
     water: 'linear-gradient(#6890f0,#386ceb)',
@@ -18,3 +18,5 @@ export const types = {
     steel: 'linear-gradient(#b8b8d0,#9797ba)',
     fairy: 'linear-gradient(#e898e8,#de6ede)',
 };
+
+export default types;
