@@ -2,7 +2,7 @@ const types = {
     normal: 'linear-gradient(#a8a878,#8a8a59)',
     fire: 'linear-gradient(#f08030,#dd6610)',
     water: 'linear-gradient(#6890f0,#386ceb)',
-    eletric: 'linear-gradient(#f8d030,#f0c108)',
+    electric: 'linear-gradient(#f8d030,#f0c108)',
     grass: 'linear-gradient(#78c850,#5ca935)',
     ice: 'linear-gradient(#98d8d8,#69c6c6)',
     fighting: 'linear-gradient(#c03028,#9d2721)',
