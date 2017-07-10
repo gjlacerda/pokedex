@@ -97,11 +97,13 @@ export default class PokemonService {
      * @param name
      */
     getMainType(name) {
-        
+
         const types = this.pokemons[name].types;
 
-        return types.reduce((a, b) => {
-            return a.slot < b.slot;
+        const type = types.reduce((a, b) => {
+            return a.slot < b.slot ? a : b;
         });
+
+        return type.type.name;
     }
 }
