@@ -47,7 +47,7 @@ export const Content = styled.div`
 export const Close = styled.div`
     position: absolute;
     top: 0;
-    right: 0;
+    right: 2px;
     line-height: 20px;
     font-size: 25px;
     padding: 5px;
