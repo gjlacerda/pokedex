@@ -3,11 +3,21 @@ import Url from 'utils/url';
 const api    = 'http://pokeapi.co/api/v2/pokemon/';
 const sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{index}.png';
 
+let instance = null;
+
 export default class PokemonService {
 
     constructor() {
-        this.url    = new Url(api);
-        this.offset = 0;
+
+        if (!instance) {
+            instance = this;
+        }
+
+        this.url      = new Url(api);
+        this.offset   = 0;
+        this.pokemons = {};
+
+        return instance;
     }
 
     /**
@@ -17,7 +27,7 @@ export default class PokemonService {
      */
     list(limit) {
 
-        let url = this.url.mountUrlParams({
+        const url = this.url.mountUrlParams({
             limit: limit || 50,
             offset: this.offset
         });
@@ -29,7 +39,7 @@ export default class PokemonService {
             fetch(url)
                 .then(response => response.json())
                 .then(({results}) => {
-                    
+
                     pokemons = results.map((pokemon, index) => {
 
                         let id = ++index + this.offset;
@@ -47,5 +57,51 @@ export default class PokemonService {
                 .catch(error => reject(error));
         });
 
+    }
+
+    /**
+     * Get data of a pokemon by name
+     * @param name
+     * @returns {Promise}
+     */
+    get(name) {
+
+        const url = api + name + '/';
+
+        return new Promise((resolve, reject) => {
+
+            const cachedPokemon = this.pokemons[name];
+
+            if (cachedPokemon) {
+                return resolve(cachedPokemon);
+            }
+
+            fetch(url)
+                .then(response => response.json())
+                .then((result) => {
+
+                    // Cache
+                    this.pokemons[result.name] = {
+                        types: result.types,
+                        name: result.name
+                    };
+
+                    resolve(result);
+                })
+                .catch(error => reject(error));
+        });
+    }
+
+    /**
+     * Get the main type from the list of pokemon types
+     * @param name
+     */
+    getMainType(name) {
+        
+        const types = this.pokemons[name].types;
+
+        return types.reduce((a, b) => {
+            return a.slot < b.slot;
+        });
     }
 }
