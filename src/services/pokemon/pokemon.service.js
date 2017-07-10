@@ -46,7 +46,6 @@ export default class PokemonService {
 
                         return Object.assign({}, pokemon, {
                             sprite: sprite.replace('{index}', id),
-                            shiny: sprite.replace('{index}', 'shiny/' + id)
                         });
                     });
 
@@ -83,10 +82,11 @@ export default class PokemonService {
                     // Cache
                     this.pokemons[result.name] = {
                         types: result.types,
-                        name: result.name
+                        name: result.name,
+                        sprite: sprite.replace('{index}', result.name)
                     };
 
-                    resolve(result);
+                    resolve(this.pokemons[result.name]);
                 })
                 .catch(error => reject(error));
         });
