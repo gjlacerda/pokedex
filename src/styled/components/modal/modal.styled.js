@@ -26,12 +26,12 @@ export const Container = styled.div`
 export const Content = styled.div`
     position: relative;
     width: 320px;
-    height: 568px;
     background-color: #fff;
     border-radius: 2px;
     animation: zoom 0.3s forwards;
     border-radius: 3px;
     overflow: hidden;
+    padding-bottom: 18px;
     
     @keyframes zoom {
         from {
@@ -50,7 +50,7 @@ export const Close = styled.div`
     right: 2px;
     line-height: 20px;
     font-size: 25px;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
