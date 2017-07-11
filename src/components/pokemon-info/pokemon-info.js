@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Header, ImageWrapper, Name, About} from 'styled/components/pokemon-info/pokemon-info.styled';
+import {Container, Header, ImageWrapper, Name, About, Types, Type} from 'styled/components/pokemon-info/pokemon-info.styled';
 import PokemonService from 'services/pokemon/pokemon.service';
 
 export default class PokemonInfo extends React.Component {
@@ -28,6 +28,14 @@ export default class PokemonInfo extends React.Component {
                     </Name>
                 </Header>
                 <About>
+                    <Types>
+                        {this.props.pokemon.types.map(type => (
+                            <Type type={type.type.name} key={type.slot}>
+                                <span>{type.type.name}</span>
+                            </Type>
+                        ))}
+                    </Types>
+
                     {this.props.pokemon.description}
                 </About>
             </Container>

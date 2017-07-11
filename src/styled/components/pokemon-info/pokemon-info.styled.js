@@ -12,9 +12,9 @@ export const Header = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: ${props => types[props.type]};
-    padding-bottom: 40px;
-    height: 200px;
+    background-color: ${props => types[props.type].light};
+    padding-bottom: 50px;
+    height: 210px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -30,16 +30,44 @@ export const ImageWrapper = styled.div`
 export const Name = styled.span`
     color: #fff;
     margin-top: 8px;
+    font-size: 18px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 `;
 
 export const About = styled.div`
     background-color: #fff;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
-    margin: -40px 8px 0 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+    margin: -50px 8px 0 8px;
     border-radius: 2px;
     padding: 15px;
     font-size: 14px;
-    line-height: 1.3;
+    line-height: 1.5;
     text-align: center;
+`;
+
+export const Types = styled.ul`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+`;
+
+export const Type = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border-radius: 3px;
+    color: white;
+    text-transform: uppercase;
+    background-color: ${props => types[props.type].dark};
+    
+    span {
+        font-size: 13px;
+        padding: 3px 0;
+        display: block;
+    }
+    
+    &:not(:last-child) {
+        margin-right: 8px;
+    }
 `;
