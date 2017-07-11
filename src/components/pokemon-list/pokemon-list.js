@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PokemonService from 'services/pokemon/pokemon.service';
+import PokemonInfo from 'components/pokemon-info/pokemon-info';
 import InfiniteScroll from 'components/infinite-scroll/infinite-scroll';
 import Modal from 'components/modal/modal';
 import {List, Item, Content, ImageWrapper} from 'styled/components/pokemon-list/pokemon-list.styled';
@@ -30,7 +31,7 @@ export default class PokemonList extends React.Component {
         return (
             <InfiniteScroll window="true" paginate={this.getPokemons.bind(this)} offset="400">
 
-                {this.state.loading && <Loading size="50" center/>}
+                {this.state.loading && <Loading size="80" center/>}
 
                 <List>
                     {this.state.pokemons.map(pokemon => (
@@ -48,9 +49,6 @@ export default class PokemonList extends React.Component {
         );
     }
 
-    /**
-     * Get a list of pokemons
-     */
     getPokemons() {
 
         this.setState({
@@ -67,11 +65,25 @@ export default class PokemonList extends React.Component {
 
     openModal(pokemon) {
 
-        ReactDOM.render(
-            <Modal pokemon={pokemon}>
-                teste
-            </Modal>,
-            document.getElementById('modalContainer')
-        );
+        this.setState({
+            loading: true
+        });
+
+        this.pokemonService.get(pokemon.name).then(result => {
+
+            // Get the sprite
+            this.pokemonService.pokemons[pokemon.name].sprite = pokemon.sprite;
+
+            ReactDOM.render(
+                <Modal>
+                    <PokemonInfo info={result}/>
+                </Modal>,
+                document.getElementById('modalContainer')
+            );
+
+            this.setState({
+                loading: false
+            });
+        });
     }
 }
