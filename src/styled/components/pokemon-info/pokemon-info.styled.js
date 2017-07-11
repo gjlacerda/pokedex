@@ -14,7 +14,7 @@ export const Header = styled.div`
     flex-direction: column;
     background-image: ${props => types[props.type]};
     padding-bottom: 30px;
-    height: 200px;
+    height: 190px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -36,8 +36,10 @@ export const Name = styled.div`
 export const About = styled.div`
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    margin: -30px 8px 0 8px;
+    margin: -32px 8px 0 8px;
     border-radius: 2px;
-    padding: 8px 10px;
-    height: 150px;
+    padding: 15px 10px;
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: center;
 `;

@@ -39,7 +39,7 @@ export default class Modal extends React.Component {
      * @param event
      */
     onEscDown(event) {
-        
+
         if (event.keyCode !== 27) {
             return;
         }

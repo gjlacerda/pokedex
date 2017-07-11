@@ -28,7 +28,7 @@ export default class PokemonInfo extends React.Component {
                     </Name>
                 </Header>
                 <About>
-                    teste
+                    {this.props.pokemon.description}
                 </About>
             </Container>
         );
