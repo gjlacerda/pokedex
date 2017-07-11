@@ -18,7 +18,7 @@ export default class PokemonService {
      * @param limit
      * @returns {Promise}
      */
-    list(limit = 40) {
+    list(limit = 50) {
 
         const db = this.$firebase
                        .database()
@@ -40,6 +40,33 @@ export default class PokemonService {
                 this.start += limit;
 
                 resolve(pokemons);
+
+            }).catch(error => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * Get a pokemon by ID
+     * @param pokemonId
+     * @returns {Promise}
+     */
+    get(pokemonId) {
+
+        const db = this.$firebase
+                       .database()
+                       .ref('pokemons')
+                       .orderByChild('id')
+                       .equalTo(+pokemonId);
+
+        return new Promise((resolve, reject) => {
+
+            db.once('value').then(response => {
+
+                const pokemon = response.val()[pokemonId];
+
+                resolve(pokemon);
 
             }).catch(error => {
                 reject(error);
