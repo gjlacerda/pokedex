@@ -3,7 +3,14 @@ import ReactDOM from 'react-dom';
 import {Container, Content, Close} from 'styled/components/modal/modal.styled';
 
 export default class Modal extends React.Component {
-    
+
+    constructor() {
+
+        super();
+
+        this.handleKeyDown = this.onEscDown.bind(this);
+    }
+
     render() {
         return (
             <Container>
@@ -16,7 +23,11 @@ export default class Modal extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('keydown', this.onKeyDown.bind(this));
+        window.addEventListener('keydown', this.handleKeyDown);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.handleKeyDown);
     }
 
     close() {
@@ -27,8 +38,8 @@ export default class Modal extends React.Component {
      * Close the modal on Esc
      * @param event
      */
-    onKeyDown(event) {
-
+    onEscDown(event) {
+        
         if (event.keyCode !== 27) {
             return;
         }
