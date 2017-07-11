@@ -35,7 +35,7 @@ export default class PokemonList extends React.Component {
 
                 <List>
                     {this.state.pokemons.map(pokemon => (
-                        <Item key={pokemon.name}>
+                        <Item key={pokemon.id}>
                             <Content onClick={this.openModal.bind(this, pokemon)}>
                                 <ImageWrapper>
                                     <img src={pokemon.sprite}/>
