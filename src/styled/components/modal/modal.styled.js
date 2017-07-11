@@ -32,6 +32,7 @@ export const Content = styled.div`
     border-radius: 3px;
     overflow: hidden;
     padding-bottom: 18px;
+    margin: 0 10px;
     
     @keyframes zoom {
         from {
