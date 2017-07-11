@@ -12,7 +12,7 @@ export default class PokemonInfo extends React.Component {
     }
 
     get capitalizedName() {
-        return this.props.info.name.charAt(0).toUpperCase() + this.props.info.name.slice(1);
+        return this.props.pokemon.name.charAt(0).toUpperCase() + this.props.pokemon.name.slice(1);
     }
 
     render() {
@@ -21,7 +21,7 @@ export default class PokemonInfo extends React.Component {
             <Container>
                 <Header type={this.getMainType()}>
                     <ImageWrapper>
-                        <img src={this.props.info.sprite}/>
+                        <img src={this.props.pokemon.sprite}/>
                     </ImageWrapper>
                     <Name>
                         {this.capitalizedName}
@@ -35,7 +35,7 @@ export default class PokemonInfo extends React.Component {
     }
 
     getMainType() {
-        return this.pokemonService.getMainType(this.props.info.name);
+        return this.pokemonService.getMainType(this.props.pokemon);
     }
 
 }

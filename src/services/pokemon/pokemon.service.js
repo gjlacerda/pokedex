@@ -1,8 +1,3 @@
-import Url from 'utils/url';
-
-const api    = 'http://pokeapi.co/api/v2/pokemon/';
-const sprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{index}.png';
-
 let instance = null;
 
 export default class PokemonService {
@@ -10,10 +5,10 @@ export default class PokemonService {
     constructor() {
 
         if (!instance) {
-            instance      = this;
-            this.url      = new Url(api);
-            this.offset   = 0;
-            this.pokemons = {};
+            instance       = this;
+            this.offset    = 0;
+            this.pokemons  = {};
+            this.$firebase = window.firebase;
         }
 
         return instance;
@@ -24,82 +19,37 @@ export default class PokemonService {
      * @param limit
      * @returns {Promise}
      */
-    list(limit) {
+    list() {
 
-        const url = this.url.mountUrlParams({
-            limit: limit || 50,
-            offset: this.offset
-        });
+        const db = this.$firebase.database().ref('pokemons');
 
         let pokemons = [];
 
         return new Promise((resolve, reject) => {
 
-            fetch(url)
-                .then(response => response.json())
-                .then(({results}) => {
+            db.once('value').then(response => {
 
-                    pokemons = results.map((pokemon, index) => {
+                response.forEach(child => {
+                    pokemons.push(child.val());
+                });
 
-                        let id = ++index + this.offset;
+                resolve(pokemons);
 
-                        return Object.assign({}, pokemon, {
-                            sprite: sprite.replace('{index}', id),
-                        });
-                    });
 
-                    this.offset += results.length;
-
-                    resolve(pokemons);
-                })
-                .catch(error => reject(error));
+            }).catch(error => {
+                reject(error);
+            });
         });
 
-    }
-
-    /**
-     * Get data of a pokemon by name
-     * @param name
-     * @returns {Promise}
-     */
-    get(name) {
-
-        const url = api + name + '/';
-
-        return new Promise((resolve, reject) => {
-
-            const cachedPokemon = this.pokemons[name];
-
-            if (cachedPokemon) {
-                return resolve(cachedPokemon);
-            }
-
-            fetch(url)
-                .then(response => response.json())
-                .then((result) => {
-
-                    // Cache
-                    this.pokemons[result.name] = {
-                        types: result.types,
-                        name: result.name,
-                        sprite: sprite.replace('{index}', result.name)
-                    };
-
-                    resolve(this.pokemons[result.name]);
-                })
-                .catch(error => reject(error));
-        });
     }
 
     /**
      * Get the main type from the list of pokemon types
-     * @param name
+     * @param pokemon
      */
-    getMainType(name) {
+    getMainType(pokemon) {
 
-        const types = this.pokemons[name].types;
-
-        const type = types.reduce((a, b) => {
+        const type = pokemon.types.reduce((a, b) => {
             return a.slot < b.slot ? a : b;
         });
 

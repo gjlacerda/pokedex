@@ -65,25 +65,11 @@ export default class PokemonList extends React.Component {
 
     openModal(pokemon) {
 
-        this.setState({
-            loading: true
-        });
-
-        this.pokemonService.get(pokemon.name).then(result => {
-
-            // Get the sprite
-            this.pokemonService.pokemons[pokemon.name].sprite = pokemon.sprite;
-
-            ReactDOM.render(
-                <Modal>
-                    <PokemonInfo info={result}/>
-                </Modal>,
-                document.getElementById('modalContainer')
-            );
-
-            this.setState({
-                loading: false
-            });
-        });
+        ReactDOM.render(
+            <Modal>
+                <PokemonInfo pokemon={pokemon}/>
+            </Modal>,
+            document.getElementById('modalContainer')
+        );
     }
 }
