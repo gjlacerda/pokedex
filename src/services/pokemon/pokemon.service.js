@@ -10,12 +10,11 @@ export default class PokemonService {
     constructor() {
 
         if (!instance) {
-            instance = this;
+            instance      = this;
+            this.url      = new Url(api);
+            this.offset   = 0;
+            this.pokemons = {};
         }
-
-        this.url      = new Url(api);
-        this.offset   = 0;
-        this.pokemons = {};
 
         return instance;
     }
