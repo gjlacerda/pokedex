@@ -6,8 +6,7 @@ export default class PokemonService {
 
         if (!instance) {
             instance       = this;
-            this.offset    = 0;
-            this.pokemons  = {};
+            this.start     = 1;
             this.$firebase = window.firebase;
         }
 
@@ -19,9 +18,14 @@ export default class PokemonService {
      * @param limit
      * @returns {Promise}
      */
-    list() {
+    list(limit = 40) {
 
-        const db = this.$firebase.database().ref('pokemons');
+        const db = this.$firebase
+                       .database()
+                       .ref('pokemons')
+                       .orderByChild('id')
+                       .startAt(this.start)
+                       .limitToFirst(limit);
 
         let pokemons = [];
 
@@ -33,8 +37,9 @@ export default class PokemonService {
                     pokemons.push(child.val());
                 });
 
-                resolve(pokemons);
+                this.start += limit;
 
+                resolve(pokemons);
 
             }).catch(error => {
                 reject(error);
