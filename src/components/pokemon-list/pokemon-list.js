@@ -23,7 +23,16 @@ export default class PokemonList extends React.Component {
     }
 
     componentWillMount() {
+
         this.getPokemons();
+
+        // Open modal if a pokemon id was passed in url
+        if (this.props.pokemonId) {
+
+            this.pokemonService.get(this.props.pokemonId).then(response => {
+                this.openModal(response);
+            });
+        }
     }
 
     render() {
