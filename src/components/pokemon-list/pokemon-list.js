@@ -6,8 +6,9 @@ import InfiniteScroll from 'components/infinite-scroll/infinite-scroll';
 import Modal from 'components/modal/modal';
 import {List, Item, Content, ImageWrapper} from 'styled/components/pokemon-list/pokemon-list.styled';
 import {Loading} from 'styled/app/loading.styled';
+import {BrowserRouter, withRouter} from 'react-router-dom';
 
-export default class PokemonList extends React.Component {
+class PokemonList extends React.Component {
 
     constructor() {
 
@@ -74,11 +75,17 @@ export default class PokemonList extends React.Component {
 
     openModal(pokemon) {
 
+        this.props.history.replace('/' + pokemon.id);
+
         ReactDOM.render(
-            <Modal>
-                <PokemonInfo pokemon={pokemon}/>
-            </Modal>,
+            <BrowserRouter>
+                <Modal>
+                    <PokemonInfo pokemon={pokemon}/>
+                </Modal>
+            </BrowserRouter>,
             document.getElementById('modalContainer')
         );
     }
 }
+
+export default withRouter(PokemonList);

@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Container, Content, Close} from 'styled/components/modal/modal.styled';
+import {withRouter} from 'react-router-dom';
 
-export default class Modal extends React.Component {
+
+class Modal extends React.Component {
 
     constructor() {
 
@@ -31,6 +33,9 @@ export default class Modal extends React.Component {
     }
 
     close() {
+
+        this.props.history.replace('/');
+        
         ReactDOM.unmountComponentAtNode(document.getElementById('modalContainer'));
     }
 
@@ -47,3 +52,5 @@ export default class Modal extends React.Component {
         this.close();
     }
 }
+
+export default withRouter(Modal);
