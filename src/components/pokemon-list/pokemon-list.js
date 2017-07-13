@@ -24,7 +24,7 @@ class PokemonList extends React.Component {
     }
 
     componentWillMount() {
-        console.log('componentWillMount');
+
         this.getPokemons();
 
         // Open modal if a pokemon id was passed in url
