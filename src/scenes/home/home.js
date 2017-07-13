@@ -9,7 +9,8 @@ export default class Home extends React.Component {
         return (
             <main>
                 <Container>
-                    <PokemonList pokemonId={this.props.match.params.id}/>
+                    {/*<PokemonList pokemonId={this.props.match.params.id}/>*/}
+                    <PokemonList pokemonId={undefined}/>
                 </Container>
                 <div id="modalContainer"></div>
             </main>
