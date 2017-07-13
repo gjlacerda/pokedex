@@ -30,7 +30,8 @@ class PokemonList extends React.Component {
         // Open modal if a pokemon id was passed in url
         if (this.props.pokemonId) {
 
-            this.pokemonService.get(this.props.pokemonId).then(response => {
+            //this.pokemonService.get(this.props.pokemonId).then(response => {
+            this.pokemonService.get().then(response => {
                 this.openModal(response);
             });
         }
