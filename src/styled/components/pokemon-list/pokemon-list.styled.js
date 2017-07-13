@@ -7,9 +7,13 @@ const spriteWidth = '96px';
 export const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    margin: 2px;
+    margin: -2px;
     padding: 0;
     list-style: none;
+    
+    ${media.desktop`
+        margin: 0;
+    `}
 `;
 
 export const Item = styled.li`
