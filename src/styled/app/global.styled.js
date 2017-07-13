@@ -11,6 +11,10 @@ injectGlobal`
         background-color: ${bodyBg};
     }
     
+    main {
+        padding-bottom: 40px;
+    }
+    
     ul {
         margin: 0;
         padding: 0;
