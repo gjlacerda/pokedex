@@ -1,5 +1,6 @@
-const path    = require('path');
-const webpack = require('webpack');
+const path              = require('path');
+const webpack           = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -45,6 +46,10 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new CopyWebpackPlugin([
+            { from: './src/views/index.html'},
+            { from: './src/assets/', to: 'src/assets/' }
+        ])
     ]
 };
