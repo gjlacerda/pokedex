@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from 'config/routes';
-import 'file-loader?name=index.html!./views/index.html';
+import Header from  'scenes/header/header';
 import 'styled/app/global.styled';
 
 ReactDOM.render(
-    <Routes/>,
+    <div>
+        <Header/>
+        <Routes/>
+    </div>
+    ,
     document.getElementById('app')
 );

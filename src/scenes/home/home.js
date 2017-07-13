@@ -1,5 +1,5 @@
 import React from 'react';
-import PokemonList from 'components/pokemon-list/Pokemon-list';
+import PokemonList from 'components/pokemon-list/pokemon-list';
 import {Container} from 'styled/app/container.styled';
 
 export default class Home extends React.Component {
