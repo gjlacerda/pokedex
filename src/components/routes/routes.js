@@ -6,7 +6,7 @@ const Routes = () => (
     <BrowserRouter>
         <div>
             {console.log('url: ' + process.env.PUBLIC_URL)}
-            <Route exact path={process.env.PUBLIC_URL + '/:id?'} component={Home}/>
+            <Route path={process.env.PUBLIC_URL + '/:id?'} component={Home}/>
         </div>
     </BrowserRouter>
 );
