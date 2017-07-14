@@ -5,6 +5,8 @@ import types from 'styled/app/pokemon-type-colors.styled';
 export const Container = styled.div`
     background-color: ${bodyBg};
     height: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 `;
 
 export const Header = styled.div`
