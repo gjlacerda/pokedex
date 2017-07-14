@@ -25,5 +25,9 @@
     "styled-components": "^2.1.0",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
+  },
+  "scripts" : {
+    "start": "webpack-dev-server",
+    "build": "webpack -p --config ./webpack.production.js"
   }
 }

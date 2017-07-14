@@ -3,10 +3,7 @@ const webpack           = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    devtool: 'inline-source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/dev-server',
         './src/index.js'
     ],
     output: {
@@ -45,15 +42,14 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
         new CopyWebpackPlugin([
             { from: './src/views/index.html'},
             { from: './src/assets/', to: 'src/assets/' }
         ]),
         new webpack.DefinePlugin({
             'process.env': {
-                'PUBLIC_URL': '""'
+                'NODE_ENV': '"production"',
+                'PUBLIC_URL': '"https://gjlacerda.github.io/pokedex/"'
             }
         })
     ]
