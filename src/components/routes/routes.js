@@ -5,8 +5,7 @@ import Home from 'scenes/home/home';
 const Routes = () => (
     <HashRouter>
         <div>
-            {console.log('url: ' + process.env.PUBLIC_URL)}
-            <Route path={process.env.PUBLIC_URL + '/:id?'} component={Home}/>
+            <Route path="/:id?" component={Home}/>
         </div>
     </HashRouter>
 );
