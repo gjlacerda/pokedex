@@ -4,7 +4,8 @@ import Home from 'scenes/home/home';
 
 const Routes = () => (
     <BrowserRouter>
-        <Route exact path="/:id?" component={Home}/>
+
+        <Route exact path={process.env.PUBLIC_URL ? process.env.PUBLIC_URL + '/:id?' : '/:id?'} component={Home}/>
     </BrowserRouter>
 );
 

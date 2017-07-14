@@ -6,8 +6,7 @@ import InfiniteScroll from 'components/infinite-scroll/infinite-scroll';
 import Modal from 'components/modal/modal';
 import {List, Item, Content, ImageWrapper} from 'styled/components/pokemon-list/pokemon-list.styled';
 import {Loading} from 'styled/app/loading.styled';
-//import {BrowserRouter, withRouter} from 'react-router-dom';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, withRouter} from 'react-router-dom';
 
 class PokemonList extends React.Component {
 
@@ -89,4 +88,4 @@ class PokemonList extends React.Component {
     }
 }
 
-export default PokemonList;
+export default withRouter(PokemonList);
