@@ -6,7 +6,7 @@ import InfiniteScroll from 'components/infinite-scroll/infinite-scroll';
 import Modal from 'components/modal/modal';
 import {List, Item, Content, ImageWrapper} from 'styled/components/pokemon-list/pokemon-list.styled';
 import {Loading} from 'styled/app/loading.styled';
-import {BrowserRouter, withRouter} from 'react-router-dom';
+import {HashRouter, withRouter} from 'react-router-dom';
 
 class PokemonList extends React.Component {
 
@@ -78,11 +78,11 @@ class PokemonList extends React.Component {
         this.props.history.replace('/' + pokemon.id);
 
         ReactDOM.render(
-            <BrowserRouter>
+            <HashRouter>
                 <Modal>
                     <PokemonInfo pokemon={pokemon}/>
                 </Modal>
-            </BrowserRouter>,
+            </HashRouter>,
             document.getElementById('modalContainer')
         );
     }

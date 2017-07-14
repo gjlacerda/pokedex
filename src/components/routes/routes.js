@@ -1,14 +1,14 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {HashRouter, Route} from 'react-router-dom';
 import Home from 'scenes/home/home';
 
 const Routes = () => (
-    <BrowserRouter>
+    <HashRouter>
         <div>
             {console.log('url: ' + process.env.PUBLIC_URL)}
             <Route path={process.env.PUBLIC_URL + '/:id?'} component={Home}/>
         </div>
-    </BrowserRouter>
+    </HashRouter>
 );
 
 export default Routes;
