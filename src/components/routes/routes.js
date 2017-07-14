@@ -4,7 +4,10 @@ import Home from 'scenes/home/home';
 
 const Routes = () => (
     <BrowserRouter>
-        <Route exact path={process.env.PUBLIC_URL + '/:id?'} component={Home}/>
+        <div>
+            {console.log('url: ' + process.env.PUBLIC_URL)}
+            <Route exact path={process.env.PUBLIC_URL + '/:id?'} component={Home}/>
+        </div>
     </BrowserRouter>
 );
 
